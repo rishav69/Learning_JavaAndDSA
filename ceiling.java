@@ -4,14 +4,25 @@ public class ceiling {
     static int ceil(int a[], int n) {
         int s = 0, e;
         e = a.length - 1;
+        boolean assend=a[0]<=a[e];
         while (s <= e) {
             int mid = s + (e - s) / 2;
             if (a[mid] == n) {
                 return mid;
-            } else if (a[mid] > n) {
-                e = mid - 1;
-            } else {
-                s = mid + 1;
+            } 
+            if (assend) {
+                if (a[mid] > n) {
+                    e = mid - 1;
+                } else {
+                    s = mid + 1;
+                }
+            }
+            else{
+                if (a[mid] < n) {
+                    e = mid - 1;
+                } else {
+                    s = mid + 1;
+                }
             }
         }
         return s;                      /*              same code for floor but will return e                 */
